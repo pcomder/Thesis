@@ -1,14 +1,24 @@
-import json, os
+# ESG → Stock-Return Notebook (Same-Year Analysis)
 
-nb_path = "/mnt/data/Untitled7.ipynb"
-with open(nb_path, 'r', encoding='utf-8') as f:
-    nb_json = json.load(f)
+This repo contains a single Jupyter notebook that:
 
-code_cells = [cell for cell in nb_json['cells'] if cell.get('cell_type') == 'code']
-full_code = "\n\n".join("".join(cell.get('source', '')) for cell in code_cells)
+* Loads year-end price data, ESG scores, and basic firm controls  
+* Cleans / aligns the panel (S&P 500, 2018-2023, unbalanced)  
+* Runs three random-effects panel regressions  
+    1. Overall ESG score → annual stock return  
+    2. E, S, G sub-scores → annual stock return  
+    3. Overall ESG score → beta (risk proxy)  
+* Prints summaries and drops quick diagnostic plots
 
-out_path = "/mnt/data/esg_panel_analysis.py"
-with open(out_path, "w", encoding="utf-8") as f:
-    f.write(full_code)
+> **Result in one line:** ESG—whether composite or split—shows no meaningful link to one-year returns or beta in this sample.
 
-print(f"Code extracted to: {out_path}")
+---
+
+## Quick Start
+
+```bash
+git clone https://github.com/your-handle/esg-return-panel.git
+cd esg-return-panel
+pip install pandas numpy statsmodels linearmodels matplotlib seaborn
+jupyter notebook Untitled7.ipynb
+
