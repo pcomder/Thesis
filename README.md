@@ -10,7 +10,6 @@ This repo contains a single Jupyter notebook that:
     3. Overall ESG score → beta (risk proxy)  
 * Prints summaries and drops quick diagnostic plots
 
-> **Result in one line:** ESG—whether composite or split—shows no meaningful link to one-year returns or beta in this sample.
 
 ---
 
